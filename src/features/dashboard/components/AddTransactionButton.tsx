@@ -19,7 +19,7 @@ export default function AddTransactionButton() {
         <button
             type="button"
             onClick={openCreateModal}
-            className="rounded-xl bg-white px-4 py-2.5 font-medium text-slate-950 transition hover:bg-slate-200"
+            className="rounded-xl bg-white px-4 py-2.5 font-medium text-slate-950 transition hover:bg-slate-200 cursor-pointer"
         >
             + Add Transaction
         </button>

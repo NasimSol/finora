@@ -4,6 +4,7 @@ import Modal from '@/components/ui/Modal';
 
 import TransactionForm from './TransactionForm';
 import {CreateTransactionInput} from "@/features/transactions/types/transactions.type";
+import {useTransactionStore} from "@/features/transactions/store/transaction.store";
 
 
 type TransactionModalProps = {
@@ -15,8 +16,12 @@ export default function TransactionModal({
                                              open,
                                              onClose,
                                          }: TransactionModalProps) {
+    const addTransaction = useTransactionStore(
+        (state) => state.addTransaction,
+    );
     const handleSubmit = (data: CreateTransactionInput) => {
-        console.log(data);
+        addTransaction(data);
+        onClose();
     };
 
     return (
