@@ -16,6 +16,7 @@ export default function TransactionModal({
                                              open,
                                              onClose,
                                          }: TransactionModalProps) {
+    const transactions=useTransactionStore((state)=>state.transactions,)
     const addTransaction = useTransactionStore(
         (state) => state.addTransaction,
     );
@@ -30,7 +31,7 @@ export default function TransactionModal({
             onClose={onClose}
             open={open}
         >
-            <TransactionForm onSubmit={handleSubmit} />
+            <TransactionForm onSubmit={handleSubmit}  />
         </Modal>
     );
 }

@@ -14,20 +14,31 @@ type TransactionStore = {
     closeCreateModal: () => void;
 
     addTransaction: (data: CreateTransactionInput) => void;
+    deleteTransaction:(id:string)=>void;
+    editingTransaction: Transaction | null;
+    openEditModal: (transaction: Transaction) => void;
 };
 
 export const useTransactionStore = create<TransactionStore>((set) => ({
     transactions: [],
 
     isCreateModalOpen: false,
+    editingTransaction:null,
 
     openCreateModal: () => {
-        set({ isCreateModalOpen: true });
+        set({ isCreateModalOpen: true,editingTransaction:null });
+    },
+    openEditModal: (transaction) => {
+        set({  isCreateModalOpen: true,
+            editingTransaction: transaction });
+
     },
 
     closeCreateModal: () => {
-        set({ isCreateModalOpen: false });
+        set({ isCreateModalOpen: false,editingTransaction: null, });
+
     },
+
 
     addTransaction: (data) => {
         const transaction: Transaction = {
@@ -39,4 +50,13 @@ export const useTransactionStore = create<TransactionStore>((set) => ({
             transactions: [...state.transactions, transaction],
         }));
     },
+
+    deleteTransaction: (data) => {
+
+
+        set((state) => ({
+            transactions:state.transactions.filter((transaction)=>transaction.id!==data),
+        }));
+    },
+
 }));

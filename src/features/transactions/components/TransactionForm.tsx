@@ -7,10 +7,11 @@ import {transactionSchema} from "@/features/transactions/schema/transaction.sche
 
 
 type TransactionFormProps = {
+    initialValues?: CreateTransactionInput;
     onSubmit: (data: CreateTransactionInput) => void;
 };
 
-export default function TransactionForm({
+export default function TransactionForm({initialValues,
                                             onSubmit,
                                         }: TransactionFormProps) {
     const {
@@ -18,6 +19,7 @@ export default function TransactionForm({
         handleSubmit,
         formState: { errors },
     } = useForm<CreateTransactionInput>({
+        defaultValues: initialValues,
         resolver: zodResolver(transactionSchema),
     });
 
