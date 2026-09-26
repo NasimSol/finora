@@ -1,6 +1,10 @@
-import {transactions} from "@/features/transactions/data/transactions";
+'use client';
+import {useTransactionStore} from "@/features/transactions/store/transaction.store";
 
 export default function RecentTransactions() {
+    const transactions = useTransactionStore(
+        (state) => state.transactions,
+    );
     return (
         <section className="mt-8 rounded-2xl border border-border bg-card p-6">
             <h3 className="text-xl font-semibold">
