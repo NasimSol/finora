@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd94b07b-a161-4190-a843-99866ef41d2b" name="Changes" comment="fix: add package for next">
+    <list default="true" id="fd94b07b-a161-4190-a843-99866ef41d2b" name="Changes" comment="feat: add edit modal to transactions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/dashboard/components/RecentTransactions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/dashboard/components/RecentTransactions.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/transactions/components/TransactionForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/transactions/components/TransactionForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/transactions/components/TransactionModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/transactions/components/TransactionModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/transactions/store/transaction.store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/transactions/store/transaction.store.ts" afterDir="false" />
     </list>
@@ -17,7 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="44" />
+    <option name="cachedIndexableFilesCount" value="48" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -26,10 +24,10 @@
     <commands />
     <urls />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="3JradZ6SfOx0sojPwubOGioJYRe" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -48,6 +46,7 @@
     "javascript.preferred.runtime.type.id": "node",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
+    "last_opened_file_path": "C:/Users/N.Soleymani/finora",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -86,7 +85,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1790421728653</updated>
-      <workItem from="1790421730089" duration="5107000" />
+      <workItem from="1790421730089" duration="7499000" />
+      <workItem from="1790502922953" duration="1568000" />
     </task>
     <task id="LOCAL-00001" summary="fix: add package for next">
       <option name="closed" value="true" />
@@ -96,7 +96,15 @@
       <option name="project" value="LOCAL" />
       <updated>1790423657817</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat: add edit modal to transactions">
+      <option name="closed" value="true" />
+      <created>1790426960044</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1790426960044</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,6 +112,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fix: add package for next" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: add package for next" />
+    <MESSAGE value="feat: add edit modal to transactions" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add edit modal to transactions" />
   </component>
 </project>

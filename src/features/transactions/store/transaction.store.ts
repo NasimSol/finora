@@ -17,6 +17,10 @@ type TransactionStore = {
     deleteTransaction:(id:string)=>void;
     editingTransaction: Transaction | null;
     openEditModal: (transaction: Transaction) => void;
+    updateTransaction: (
+        id: string,
+        data: CreateTransactionInput
+    ) => void
 };
 
 export const useTransactionStore = create<TransactionStore>((set) => ({
@@ -48,6 +52,14 @@ export const useTransactionStore = create<TransactionStore>((set) => ({
 
         set((state) => ({
             transactions: [...state.transactions, transaction],
+        }));
+    },
+
+    updateTransaction: (id,data) => {
+
+        set((state) => ({
+          transactions:state.transactions.map((transaction)=>
+          transaction.id===id?{...transaction,...data}:transaction)
         }));
     },
 

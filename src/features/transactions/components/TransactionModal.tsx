@@ -16,22 +16,35 @@ export default function TransactionModal({
                                              open,
                                              onClose,
                                          }: TransactionModalProps) {
-    const transactions=useTransactionStore((state)=>state.transactions,)
+    const editTransaction=useTransactionStore((state)=>state.editingTransaction,)
     const addTransaction = useTransactionStore(
         (state) => state.addTransaction,
     );
+    const editingTransaction=useTransactionStore((state)=>state.editingTransaction)
+    const updateTransaction=useTransactionStore((state)=>state.updateTransaction)
+
     const handleSubmit = (data: CreateTransactionInput) => {
-        addTransaction(data);
+        editingTransaction ? updateTransaction(editingTransaction.id, data) :addTransaction(data);
         onClose();
     };
 
+
     return (
         <Modal
-            title="Add Transaction"
+            title={`${editingTransaction} ? "edit Transaction":"Add Transaction"`}
             onClose={onClose}
             open={open}
         >
-            <TransactionForm onSubmit={handleSubmit}  />
+            <TransactionForm onSubmit={handleSubmit}   initialValues={
+                editTransaction
+                    ? {
+                        title: editTransaction.title,
+                        category: editTransaction.category,
+                        amount: editTransaction.amount,
+                        type: editTransaction.type,
+                    }
+                    : undefined
+            }/>
         </Modal>
     );
 }
