@@ -8,10 +8,10 @@ import type {
 type TransactionStore = {
     transactions: Transaction[];
 
-    isCreateModalOpen: boolean;
+    isTransactionModalOpen: boolean;
 
     openCreateModal: () => void;
-    closeCreateModal: () => void;
+    closeTransactionModal: () => void;
 
     addTransaction: (data: CreateTransactionInput) => void;
     deleteTransaction:(id:string)=>void;
@@ -26,20 +26,20 @@ type TransactionStore = {
 export const useTransactionStore = create<TransactionStore>((set) => ({
     transactions: [],
 
-    isCreateModalOpen: false,
+    isTransactionModalOpen: false,
     editingTransaction:null,
 
     openCreateModal: () => {
-        set({ isCreateModalOpen: true,editingTransaction:null });
+        set({ isTransactionModalOpen: true,editingTransaction:null });
     },
     openEditModal: (transaction) => {
-        set({  isCreateModalOpen: true,
+        set({  isTransactionModalOpen: true,
             editingTransaction: transaction });
 
     },
 
-    closeCreateModal: () => {
-        set({ isCreateModalOpen: false,editingTransaction: null, });
+    closeTransactionModal: () => {
+        set({ isTransactionModalOpen: false,editingTransaction: null, });
 
     },
 

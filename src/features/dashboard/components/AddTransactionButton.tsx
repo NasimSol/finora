@@ -4,14 +4,14 @@ import { useTransactionStore } from '../../transactions/store/transaction.store'
 import TransactionModal from "@/features/transactions/components/TransactionModal";
 
 export default function AddTransactionButton() {
-    const isCreateModalOpen = useTransactionStore(
-        (state) => state.isCreateModalOpen,)
+    const isTransactionModalOpen = useTransactionStore(
+        (state) => state.isTransactionModalOpen,)
     const openCreateModal = useTransactionStore(
         (state) => state.openCreateModal,
     );
 
-    const closeCreateModal = useTransactionStore(
-        (state) => state.closeCreateModal,
+    const closeTransactionModal = useTransactionStore(
+        (state) => state.closeTransactionModal,
     );
 
     return (
@@ -23,9 +23,9 @@ export default function AddTransactionButton() {
         >
             + Add Transaction
         </button>
-            {isCreateModalOpen && (
-               <TransactionModal open={isCreateModalOpen}
-                                 onClose={closeCreateModal} />
+            {isTransactionModalOpen && (
+               <TransactionModal open={isTransactionModalOpen}
+                                 onClose={closeTransactionModal} />
             )}
 
         </>

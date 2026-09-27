@@ -31,7 +31,7 @@ export default function TransactionModal({
 
     return (
         <Modal
-            title={`${editingTransaction} ? "edit Transaction":"Add Transaction"`}
+            title={editingTransaction ? "edit Transaction":"Add Transaction"}
             onClose={onClose}
             open={open}
         >
