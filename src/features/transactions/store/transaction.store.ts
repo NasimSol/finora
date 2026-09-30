@@ -4,6 +4,7 @@ import type {
     CreateTransactionInput,
     Transaction,
 } from '@/features/transactions/types/transactions.type';
+import {db} from "@/lib/db/database";
 
 type TransactionStore = {
     transactions: Transaction[];
@@ -13,14 +14,17 @@ type TransactionStore = {
     openCreateModal: () => void;
     closeTransactionModal: () => void;
 
-    addTransaction: (data: CreateTransactionInput) => void;
-    deleteTransaction:(id:string)=>void;
+    addTransaction: (data: CreateTransactionInput) => Promise<void>;
+    deleteTransaction:(id:string)=>Promise<void>;
     editingTransaction: Transaction | null;
     openEditModal: (transaction: Transaction) => void;
     updateTransaction: (
         id: string,
         data: CreateTransactionInput
-    ) => void
+    ) => Promise<void>;
+    loadTransactions: () => Promise<void>;
+    isHydrated: boolean;
+
 };
 
 export const useTransactionStore = create<TransactionStore>((set) => ({
@@ -28,6 +32,7 @@ export const useTransactionStore = create<TransactionStore>((set) => ({
 
     isTransactionModalOpen: false,
     editingTransaction:null,
+    isHydrated: false,
 
     openCreateModal: () => {
         set({ isTransactionModalOpen: true,editingTransaction:null });
@@ -44,18 +49,21 @@ export const useTransactionStore = create<TransactionStore>((set) => ({
     },
 
 
-    addTransaction: (data) => {
+    addTransaction: async (data) => {
         const transaction: Transaction = {
             id: crypto.randomUUID(),
             ...data,
         };
+        await db.transactions.add(transaction);
+
 
         set((state) => ({
             transactions: [...state.transactions, transaction],
         }));
     },
 
-    updateTransaction: (id,data) => {
+    updateTransaction: async (id,data) => {
+        await db.transactions.update(id, data);
 
         set((state) => ({
           transactions:state.transactions.map((transaction)=>
@@ -63,12 +71,28 @@ export const useTransactionStore = create<TransactionStore>((set) => ({
         }));
     },
 
-    deleteTransaction: (data) => {
+    deleteTransaction: async (id) => {
+        await db.transactions.delete( id);
 
 
         set((state) => ({
-            transactions:state.transactions.filter((transaction)=>transaction.id!==data),
+            transactions:state.transactions.filter((transaction)=>transaction.id!==id),
         }));
+    },
+
+    loadTransactions: async () => {
+        try {
+            const transactions = await db.transactions.toArray();
+            set({
+                transactions,
+                isHydrated: true,
+            });
+        } catch (error) {
+
+            set({
+                isHydrated: true,
+            });
+        }
     },
 
 }));

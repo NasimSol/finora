@@ -1,4 +1,5 @@
 import Sidebar from "@/components/layout/Sidebar";
+import TransactionInitializer from "@/features/transactions/components/TransactionInitializer";
 
 type DashboardLayoutProps = {
     children: React.ReactNode;
@@ -9,6 +10,7 @@ export default function DashboardLayout({
                                         }: DashboardLayoutProps) {
     return (
         <main className="min-h-screen bg-background text-foreground">
+            <TransactionInitializer />
             <div className="flex min-h-screen">
                 <Sidebar/>
                 <section className="flex-1 p-6 md:p-10">
