@@ -2,17 +2,19 @@
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import {CreateTransactionInput} from "@/features/transactions/types/transactions.type";
+import type {CreateTransactionInput} from "@/features/transactions/types/transactions.type";
 import {transactionSchema} from "@/features/transactions/schema/transaction.schema";
 
 
 type TransactionFormProps = {
     initialValues?: CreateTransactionInput;
-    onSubmit: (data: CreateTransactionInput) => void;
+    onSubmit: (data: CreateTransactionInput) => void | Promise<void>;
+    isEditing?: boolean;
 };
 
 export default function TransactionForm({initialValues,
                                             onSubmit,
+                                            isEditing = false,
                                         }: TransactionFormProps) {
     const {
         register,
@@ -122,7 +124,7 @@ export default function TransactionForm({initialValues,
                 type="submit"
                 className="w-full rounded-xl bg-primary px-4 py-2.5 font-medium transition hover:bg-primary-hover"
             >
-                Add Transaction
+                {isEditing ? 'Update Transaction' : 'Add Transaction'}
             </button>
         </form>
     );

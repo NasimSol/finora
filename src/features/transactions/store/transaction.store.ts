@@ -14,16 +14,18 @@ type TransactionStore = {
     openCreateModal: () => void;
     closeTransactionModal: () => void;
 
-    addTransaction: (data: CreateTransactionInput) => Promise<void>;
-    deleteTransaction:(id:string)=>Promise<void>;
+    addTransaction: (data: CreateTransactionInput) => Promise<boolean>;
+    deleteTransaction:(id:string)=>Promise<boolean>;
     editingTransaction: Transaction | null;
     openEditModal: (transaction: Transaction) => void;
     updateTransaction: (
         id: string,
         data: CreateTransactionInput
-    ) => Promise<void>;
+    ) => Promise<boolean>;
     loadTransactions: () => Promise<void>;
     isHydrated: boolean;
+    error: string | null;
+    clearError: () => void;
 
 };
 
@@ -33,6 +35,10 @@ export const useTransactionStore = create<TransactionStore>((set) => ({
     isTransactionModalOpen: false,
     editingTransaction:null,
     isHydrated: false,
+    error:null,
+    clearError: () => {
+        set({ error: null });
+    },
 
     openCreateModal: () => {
         set({ isTransactionModalOpen: true,editingTransaction:null });
@@ -50,37 +56,73 @@ export const useTransactionStore = create<TransactionStore>((set) => ({
 
 
     addTransaction: async (data) => {
-        const transaction: Transaction = {
-            id: crypto.randomUUID(),
-            ...data,
-        };
-        await db.transactions.add(transaction);
+        set({ error: null });
+
+        try{
+            const transaction: Transaction = {
+                id: crypto.randomUUID(),
+                ...data,
+            };
+
+            await db.transactions.add(transaction);
 
 
-        set((state) => ({
-            transactions: [...state.transactions, transaction],
-        }));
+            set((state) => ({
+                transactions: [...state.transactions, transaction],
+            }));
+            return true;
+        } catch(error){
+            console.error('Failed to add transaction:', error);
+
+            set({error:'Failed to add transaction. Please try again.'});
+            return false;
+        }
+
+
     },
 
     updateTransaction: async (id,data) => {
-        await db.transactions.update(id, data);
+        set({ error: null });
+        try{
+            await db.transactions.update(id, data);
 
-        set((state) => ({
-          transactions:state.transactions.map((transaction)=>
-          transaction.id===id?{...transaction,...data}:transaction)
-        }));
+            set((state) => ({
+                transactions:state.transactions.map((transaction)=>
+                    transaction.id===id?{...transaction,...data}:transaction)
+            }));
+            return true;
+        }catch (error){
+            console.error('Failed to update transaction:', error);
+
+            set({error:'Failed to update transaction. Please try again.'});
+            return false;
+
+        }
+
     },
 
     deleteTransaction: async (id) => {
-        await db.transactions.delete( id);
+        set({ error: null });
+
+        try{
+            await db.transactions.delete( id);
 
 
-        set((state) => ({
-            transactions:state.transactions.filter((transaction)=>transaction.id!==id),
-        }));
+            set((state) => ({
+                transactions:state.transactions.filter((transaction)=>transaction.id!==id),
+            }));
+            return true;
+        }catch (error){
+            console.error('Failed to delete transaction:', error);
+
+            set({error:'Failed to delete transaction. Please try again.'});
+            return false;
+        }
+
     },
 
     loadTransactions: async () => {
+        set({ error: null });
         try {
             const transactions = await db.transactions.toArray();
             set({
@@ -88,8 +130,12 @@ export const useTransactionStore = create<TransactionStore>((set) => ({
                 isHydrated: true,
             });
         } catch (error) {
+            console.error('Failed to load transactions:', error);
+
 
             set({
+                error: 'Failed to load transactions. Please refresh the page.',
+
                 isHydrated: true,
             });
         }

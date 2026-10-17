@@ -23,9 +23,18 @@ export default function TransactionModal({
     const editingTransaction=useTransactionStore((state)=>state.editingTransaction)
     const updateTransaction=useTransactionStore((state)=>state.updateTransaction)
 
-    const handleSubmit = (data: CreateTransactionInput) => {
-        editingTransaction ? updateTransaction(editingTransaction.id, data) :addTransaction(data);
-        onClose();
+    const handleSubmit = async (data: CreateTransactionInput) => {
+        let success: boolean;
+
+        if (editingTransaction) {
+            success = await updateTransaction(editingTransaction.id, data);
+        } else {
+            success = await addTransaction(data);
+        }
+
+        if (success) {
+            onClose();
+        }
     };
 
 
@@ -35,7 +44,10 @@ export default function TransactionModal({
             onClose={onClose}
             open={open}
         >
-            <TransactionForm onSubmit={handleSubmit}   initialValues={
+            <TransactionForm
+                onSubmit={handleSubmit}
+                isEditing={Boolean(editingTransaction)}
+                initialValues={
                 editTransaction
                     ? {
                         title: editTransaction.title,
