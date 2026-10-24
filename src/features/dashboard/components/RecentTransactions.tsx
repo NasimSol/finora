@@ -8,6 +8,7 @@ export default function RecentTransactions() {
     const deleteTransaction = useTransactionStore((state) => state.deleteTransaction);
 
     const openEditModal = useTransactionStore((state) => state.openEditModal);
+    const openConfirmModal=useTransactionStore((state)=>state.openConfirmModal)
     return (
         <section className="mt-8 rounded-2xl border border-border bg-card p-6">
             <h3 className="text-xl font-semibold">
@@ -36,7 +37,7 @@ export default function RecentTransactions() {
                             <div className="flex gap-4">
                                 <button
                                     type="button"
-                                    onClick={() => deleteTransaction(transaction.id)}
+                                    onClick={()=>openConfirmModal(transaction.id)}
                                     className="cursor-pointer"
                                 >
                                     Delete

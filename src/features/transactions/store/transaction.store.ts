@@ -8,16 +8,19 @@ import {db} from "@/lib/db/database";
 
 type TransactionStore = {
     transactions: Transaction[];
-
+    transactionToDeleteId: string | null;
     isTransactionModalOpen: boolean;
+    isConfirmDeleteModalOpen: boolean;
 
     openCreateModal: () => void;
+    openConfirmModal:(id:string)=>void;
     closeTransactionModal: () => void;
 
     addTransaction: (data: CreateTransactionInput) => Promise<boolean>;
     deleteTransaction:(id:string)=>Promise<boolean>;
     editingTransaction: Transaction | null;
     openEditModal: (transaction: Transaction) => void;
+    closeConfirmModal:()=>void;
     updateTransaction: (
         id: string,
         data: CreateTransactionInput
@@ -31,10 +34,11 @@ type TransactionStore = {
 
 export const useTransactionStore = create<TransactionStore>((set) => ({
     transactions: [],
-
+    transactionToDeleteId:null,
     isTransactionModalOpen: false,
     editingTransaction:null,
     isHydrated: false,
+    isConfirmDeleteModalOpen: false,
     error:null,
     clearError: () => {
         set({ error: null });
@@ -42,6 +46,16 @@ export const useTransactionStore = create<TransactionStore>((set) => ({
 
     openCreateModal: () => {
         set({ isTransactionModalOpen: true,editingTransaction:null });
+    },
+    openConfirmModal:(id)=> {
+        set({isConfirmDeleteModalOpen:true, transactionToDeleteId: id,
+            error: null,});
+    },
+    closeConfirmModal: () => {
+        set({
+            isConfirmDeleteModalOpen: false,
+            transactionToDeleteId: null,
+        });
     },
     openEditModal: (transaction) => {
         set({  isTransactionModalOpen: true,

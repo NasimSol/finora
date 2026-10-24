@@ -3,7 +3,7 @@
 import Modal from '@/components/ui/Modal';
 
 import TransactionForm from './TransactionForm';
-import {CreateTransactionInput} from "@/features/transactions/types/transactions.type";
+import type {CreateTransactionInput} from "@/features/transactions/types/transactions.type";
 import {useTransactionStore} from "@/features/transactions/store/transaction.store";
 
 
@@ -16,7 +16,6 @@ export default function TransactionModal({
                                              open,
                                              onClose,
                                          }: TransactionModalProps) {
-    const editTransaction=useTransactionStore((state)=>state.editingTransaction,)
     const addTransaction = useTransactionStore(
         (state) => state.addTransaction,
     );
@@ -48,12 +47,12 @@ export default function TransactionModal({
                 onSubmit={handleSubmit}
                 isEditing={Boolean(editingTransaction)}
                 initialValues={
-                editTransaction
+                    editingTransaction
                     ? {
-                        title: editTransaction.title,
-                        category: editTransaction.category,
-                        amount: editTransaction.amount,
-                        type: editTransaction.type,
+                        title: editingTransaction.title,
+                        category: editingTransaction.category,
+                        amount: editingTransaction.amount,
+                        type: editingTransaction.type,
                     }
                     : undefined
             }/>
