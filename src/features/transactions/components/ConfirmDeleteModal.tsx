@@ -37,15 +37,23 @@ export default function ConfirmDeleteModal({
             onClose={onClose}
             open={open}
         >
-            <>are sure you want delete this transaction?</>
-            <div className="flex gap-4">
+            <>{`are sure you want delete this ${id} transaction?`}</>
+            <div className="flex justify-end ">
                 <button
                     type="button"
+                    onClick={()=>closeDeleteModal()}
+                    className="mr-2 rounded-xl bg-white px-4 py-2 font-medium text-slate-950 transition hover:bg-slate-200 cursor-pointer mt-2"
+                >
+                    close
+                </button>
+                <button
+                    type="submit"
                     onClick={handleConfirmDelete}
-                    className="cursor-pointer"
+                    className="rounded-xl bg-primary px-4 py-2 font-medium transition hover:bg-primary-hover mt-2"
                 >
                     Delete
                 </button>
+
 
             </div>
         </Modal>

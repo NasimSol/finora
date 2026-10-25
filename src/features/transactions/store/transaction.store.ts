@@ -32,7 +32,7 @@ type TransactionStore = {
 
 };
 
-export const useTransactionStore = create<TransactionStore>((set) => ({
+export const useTransactionStore = create<TransactionStore>()((set,get) => ({
     transactions: [],
     transactionToDeleteId:null,
     isTransactionModalOpen: false,

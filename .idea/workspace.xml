@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd94b07b-a161-4190-a843-99866ef41d2b" name="Changes" comment="feat: seperate layout from page">
-      <change afterPath="$PROJECT_DIR$/src/features/transactions/components/ConfirmDeleteModal.tsx" afterDir="false" />
+    <list default="true" id="fd94b07b-a161-4190-a843-99866ef41d2b" name="Changes" comment="feat: render delete confirm modal in recentTransaction component">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/analytics/components/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/analytics/components/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/dashboard/components/RecentTransactions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/dashboard/components/RecentTransactions.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/transactions/components/TransactionModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/transactions/components/TransactionModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/transactions/store/transaction.store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/transactions/store/transaction.store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/transactions/components/ConfirmDeleteModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/transactions/components/ConfirmDeleteModal.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,7 +14,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="51" />
+    <option name="cachedIndexableFilesCount" value="52" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -99,7 +95,8 @@
       <workItem from="1792382544174" duration="1075000" />
       <workItem from="1792390664020" duration="5997000" />
       <workItem from="1792408171276" duration="8527000" />
-      <workItem from="1792819945579" duration="7497000" />
+      <workItem from="1792819945579" duration="7719000" />
+      <workItem from="1792905129399" duration="6006000" />
     </task>
     <task id="LOCAL-00001" summary="fix: add package for next">
       <option name="closed" value="true" />
@@ -165,7 +162,23 @@
       <option name="project" value="LOCAL" />
       <updated>1792497907732</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="feat: add delete confirm modal">
+      <option name="closed" value="true" />
+      <created>1792834530372</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1792834530372</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat: render delete confirm modal in recentTransaction component">
+      <option name="closed" value="true" />
+      <created>1792909006661</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1792909006661</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,6 +193,8 @@
     <MESSAGE value="feat: change style in transition card" />
     <MESSAGE value="feat: add error nad managing to store and modal" />
     <MESSAGE value="feat: seperate layout from page" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: seperate layout from page" />
+    <MESSAGE value="feat: add delete confirm modal" />
+    <MESSAGE value="feat: render delete confirm modal in recentTransaction component" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: render delete confirm modal in recentTransaction component" />
   </component>
 </project>
