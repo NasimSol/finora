@@ -4,9 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd94b07b-a161-4190-a843-99866ef41d2b" name="Changes" comment="feat: render delete confirm modal in recentTransaction component">
+    <list default="true" id="fd94b07b-a161-4190-a843-99866ef41d2b" name="Changes" comment="feat: add library for icons">
+      <change afterPath="$PROJECT_DIR$/src/components/ui/Select.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/transactions/data/categories.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/Button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/Modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/Modal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/dashboard/components/AddTransactionButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/dashboard/components/AddTransactionButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/dashboard/components/DashboardHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/dashboard/components/DashboardHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/dashboard/components/RecentTransactions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/dashboard/components/RecentTransactions.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/dashboard/components/SummaryCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/dashboard/components/SummaryCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/transactions/components/ConfirmDeleteModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/transactions/components/ConfirmDeleteModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/transactions/components/TransactionForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/transactions/components/TransactionForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/transactions/types/transactions.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/transactions/types/transactions.type.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +110,7 @@
       <workItem from="1792390664020" duration="5997000" />
       <workItem from="1792408171276" duration="8527000" />
       <workItem from="1792819945579" duration="7719000" />
-      <workItem from="1792905129399" duration="6006000" />
+      <workItem from="1792905129399" duration="19586000" />
     </task>
     <task id="LOCAL-00001" summary="fix: add package for next">
       <option name="closed" value="true" />
@@ -178,7 +192,23 @@
       <option name="project" value="LOCAL" />
       <updated>1792909006661</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="feat: render delete confirm modal in recentTransaction component">
+      <option name="closed" value="true" />
+      <created>1792916672659</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1792916672659</updated>
+    </task>
+    <task id="LOCAL-00012" summary="feat: add library for icons">
+      <option name="closed" value="true" />
+      <created>1792927250233</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1792927250233</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,6 +225,7 @@
     <MESSAGE value="feat: seperate layout from page" />
     <MESSAGE value="feat: add delete confirm modal" />
     <MESSAGE value="feat: render delete confirm modal in recentTransaction component" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: render delete confirm modal in recentTransaction component" />
+    <MESSAGE value="feat: add library for icons" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add library for icons" />
   </component>
 </project>

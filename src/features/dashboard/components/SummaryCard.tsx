@@ -5,7 +5,7 @@ const summaryCardConfig = {
         label: 'Total Balance',
         icon: '💰',
         color:'text-foreground',
-        iconBackground: 'bg-card',
+        iconBackground: 'bg-muted',
     },
     income: {
         label: 'Income',
@@ -33,7 +33,7 @@ export default function SummaryCard({value,
         <div className="rounded-2xl border border-border bg-card p-6 transition hover:bg-surface">
             <div className="flex items-center gap-3">
                 <span  className={`flex h-10 w-10 items-center justify-center rounded-xl ${config.iconBackground}`}>{config.icon}</span>
-            <p className="text-sm text-muted">
+            <p className="text-sm text-muted-foreground">
                 {config.label}
             </p>
             </div>

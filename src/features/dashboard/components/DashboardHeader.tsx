@@ -4,7 +4,7 @@ export default function DashboardHeader() {
     return (
         <header className="flex items-center justify-between">
             <div>
-                <p className="text-sm text-muted">
+                <p className="text-sm text-muted-foreground">
                     Welcome back
                 </p>
 
@@ -12,7 +12,7 @@ export default function DashboardHeader() {
                     Good morning 👋
                 </h2>
 
-                <p className="mt-2 text-muted">
+                <p className="mt-2 text-muted-foreground">
                     Here&apos;s your financial overview.
                 </p>
             </div>

@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import type {CreateTransactionInput} from "@/features/transactions/types/transactions.type";
 import {transactionSchema} from "@/features/transactions/schema/transaction.schema";
+import categories from "@/features/transactions/data/categories";
+import {Button} from "@/components/ui/Button";
 
 
 type TransactionFormProps = {
@@ -41,7 +43,7 @@ export default function TransactionForm({initialValues,
                 <input
                     id="title"
                     {...register('title')}
-                    className="w-full rounded-lg border border-border bg-surface px-3 py-2"
+                    className="w-full rounded-lg border border-input bg-background px-3 py-2 text-foreground"
                 />
 
                 {errors.title && (
@@ -59,11 +61,17 @@ export default function TransactionForm({initialValues,
                     Category
                 </label>
 
-                <input
+                <select
                     id="category"
                     {...register('category')}
-                    className="w-full rounded-lg border border-border bg-surface px-3 py-2"
-                />
+                    className="w-full rounded-lg border border-input bg-background px-3 py-2 text-foreground"
+                >
+                    {categories.map((category) => (
+                        <option key={category.id} value={category.label}>
+                            {category.label}
+                        </option>
+                    ))}
+                </select>
 
                 {errors.category && (
                     <p className="mt-1 text-sm text-danger">
@@ -86,7 +94,7 @@ export default function TransactionForm({initialValues,
                     {...register('amount', {
                         valueAsNumber: true,
                     })}
-                    className="w-full rounded-lg border border-border bg-surface px-3 py-2"
+                    className="w-full rounded-lg border border-input bg-background px-3 py-2 text-foreground"
                 />
 
                 {errors.amount && (
@@ -107,7 +115,7 @@ export default function TransactionForm({initialValues,
                 <select
                     id="type"
                     {...register('type')}
-                    className="w-full rounded-lg border border-border bg-surface px-3 py-2"
+                    className="w-full rounded-lg border border-input bg-background px-3 py-2 text-foreground"
                 >
                     <option value="expense">Expense</option>
                     <option value="income">Income</option>
@@ -120,12 +128,12 @@ export default function TransactionForm({initialValues,
                 )}
             </div>
 
-            <button
+            <Button
                 type="submit"
-                className="w-full rounded-xl bg-primary px-4 py-2.5 font-medium transition hover:bg-primary-hover"
+                className="h-10 w-full rounded-xl px-4 font-medium"
             >
                 {isEditing ? 'Update Transaction' : 'Add Transaction'}
-            </button>
+            </Button>
         </form>
     );
 }

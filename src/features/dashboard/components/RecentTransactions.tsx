@@ -1,6 +1,7 @@
 'use client';
 import {useTransactionStore} from "@/features/transactions/store/transaction.store";
 import ConfirmDeleteModal from "@/features/transactions/components/ConfirmDeleteModal";
+import {Button} from "@/components/ui/Button";
 
 export default function RecentTransactions() {
     const transactions = useTransactionStore(
@@ -21,7 +22,7 @@ export default function RecentTransactions() {
                          className="flex items-center justify-between">
                         <div>
                             <p>{transaction.title}</p>
-                            <p className="text-sm text-muted">
+                            <p className="text-sm text-muted-foreground">
                                 {transaction.category}
                             </p>
                         </div>
@@ -29,32 +30,34 @@ export default function RecentTransactions() {
                         <span
                             className={
                                 transaction.type === 'income'
-                                    ? 'text-emerald-400'
-                                    : 'text-rose-400'
+                                    ? 'text-success'
+                                    : 'text-danger'
                             }
                         >{transaction.type === 'income' ? '+' : '-'}${Math.abs(transaction.amount)}</span>
-                        <div className="flex gap-4">
-                            <button
+                        <div className="flex gap-2">
+                            <Button
                                 type="button"
+                                variant="destructive"
+                                size="sm"
                                 onClick={() => openConfirmDeleteModal(transaction.id)}
-                                className="cursor-pointer"
                             >
                                 Delete
-                            </button>
-                            <button
+                            </Button>
+                            <Button
                                 type="button"
+                                variant="outline"
+                                size="sm"
                                 onClick={() => openEditModal(transaction)}
-                                className="cursor-pointer"
                             >
                                 Edit
-                            </button>
+                            </Button>
                         </div>
 
                     </div>
                 ))}
 
 
-            </div> : <div className="mt-1 flex justify-center">there is no transactions yet</div>}
+            </div> : <div className="mt-6 text-center text-sm text-muted-foreground">there is no transactions yet</div>}
 
 
             <ConfirmDeleteModal open={confirmDeleteOpen} onClose={() => closeConfirmDelete()}/>

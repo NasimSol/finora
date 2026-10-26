@@ -17,7 +17,7 @@ export default function Modal({
 
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-black/50">
-            <div className="w-full max-w-md rounded-2xl bg-surface p-6">
+            <div className="w-full max-w-md rounded-2xl border border-border bg-popover p-6 text-popover-foreground">
                 <div className="flex items-center justify-between">
                     {title && (
                         <h2 className="text-xl font-semibold">
@@ -29,7 +29,7 @@ export default function Modal({
                         type="button"
                         onClick={onClose}
                         aria-label="Close modal"
-                        className="text-muted transition hover:text-foreground"
+                        className="text-muted-foreground transition hover:text-foreground"
                     >
                         ✕
                     </button>

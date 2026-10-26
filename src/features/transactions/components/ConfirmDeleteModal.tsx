@@ -1,6 +1,7 @@
 'use client';
 
 import Modal from '@/components/ui/Modal';
+import {Button} from "@/components/ui/Button";
 import {useTransactionStore} from "@/features/transactions/store/transaction.store";
 
 
@@ -38,21 +39,23 @@ export default function ConfirmDeleteModal({
             open={open}
         >
             <>{`are sure you want delete this ${id} transaction?`}</>
-            <div className="flex justify-end ">
-                <button
+            <div className="flex justify-end gap-2">
+                <Button
                     type="button"
-                    onClick={()=>closeDeleteModal()}
-                    className="mr-2 rounded-xl bg-white px-4 py-2 font-medium text-slate-950 transition hover:bg-slate-200 cursor-pointer mt-2"
+                    variant="outline"
+                    onClick={() => closeDeleteModal()}
+                    className="mt-2"
                 >
-                    close
-                </button>
-                <button
-                    type="submit"
+                    Close
+                </Button>
+                <Button
+                    type="button"
+                    variant="destructive"
                     onClick={handleConfirmDelete}
-                    className="rounded-xl bg-primary px-4 py-2 font-medium transition hover:bg-primary-hover mt-2"
+                    className="mt-2"
                 >
                     Delete
-                </button>
+                </Button>
 
 
             </div>

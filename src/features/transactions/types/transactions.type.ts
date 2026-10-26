@@ -1,3 +1,5 @@
+import {ReactElement} from "react";
+
 export type TransactionType = 'income' | 'expense';
 
 export type Transaction = {
@@ -14,3 +16,9 @@ export type CreateTransactionInput = {
     amount: number;
     type: TransactionType;
 };
+
+export type Category={
+    id:number;
+    label:string;
+    icon: ReactElement;
+}
