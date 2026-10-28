@@ -1,5 +1,4 @@
-import {ReactElement} from "react";
-
+import type { LucideIcon } from "lucide-react";
 export type TransactionType = 'income' | 'expense';
 
 export type Transaction = {
@@ -20,5 +19,5 @@ export type CreateTransactionInput = {
 export type Category={
     id:number;
     label:string;
-    icon: ReactElement;
+    icon: LucideIcon;
 }
