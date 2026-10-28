@@ -2,6 +2,7 @@
 import {useTransactionStore} from "@/features/transactions/store/transaction.store";
 import ConfirmDeleteModal from "@/features/transactions/components/ConfirmDeleteModal";
 import {Button} from "@/components/ui/Button";
+import {formatWithThousandsSeparator} from "@/lib/utils/formatWithThousandsSeparator";
 
 export default function RecentTransactions() {
     const transactions = useTransactionStore(
@@ -33,7 +34,7 @@ export default function RecentTransactions() {
                                     ? 'text-success'
                                     : 'text-danger'
                             }
-                        >{transaction.type === 'income' ? '+' : '-'}${Math.abs(transaction.amount)}</span>
+                        >{transaction.type === 'income' ? '+' : '-'}${formatWithThousandsSeparator(Math.abs(transaction.amount))}</span>
                         <div className="flex gap-2">
                             <Button
                                 type="button"

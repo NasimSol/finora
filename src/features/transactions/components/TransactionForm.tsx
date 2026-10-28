@@ -7,6 +7,7 @@ import categories from "@/features/transactions/data/categories";
 import {Button} from "@/components/ui/Button";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/Select";
 import { Controller, useForm } from 'react-hook-form';
+import {AmountInput} from "@/components/ui/input/amount-input";
 
 type TransactionFormProps = {
     initialValues?: CreateTransactionInput;
@@ -117,15 +118,20 @@ export default function TransactionForm({initialValues,
                 >
                     Amount
                 </label>
-
-                <input
-                    id="amount"
-                    type="number"
-                    {...register('amount', {
-                        valueAsNumber: true,
-                    })}
-                    className={controlClassName}
-                />
+                <Controller
+                    control={control}
+                    name="amount"
+                    render={({field})=>(
+                    <AmountInput
+                    name={field.name}
+                    value={field.value ?? ""}
+                    onChange={(value) => {
+                        field.onChange(value === "" ? "" : Number(value));
+                    }}
+                    onBlur={field.onBlur}
+                    placeholder="Enter amount"
+                    />
+                )}  />
 
                 {errors.amount && (
                     <p className="mt-1 text-sm text-danger">
