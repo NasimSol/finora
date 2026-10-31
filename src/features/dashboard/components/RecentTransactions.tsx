@@ -3,6 +3,7 @@ import {useTransactionStore} from "@/features/transactions/store/transaction.sto
 import ConfirmDeleteModal from "@/features/transactions/components/ConfirmDeleteModal";
 import {Button} from "@/components/ui/Button";
 import {formatWithThousandsSeparator} from "@/lib/utils/formatWithThousandsSeparator";
+import categories from "@/features/transactions/data/categories";
 
 export default function RecentTransactions() {
     const transactions = useTransactionStore(
@@ -18,44 +19,50 @@ export default function RecentTransactions() {
                 Recent Transactions
             </h3>
             {transactions.length > 0 ? <div className="mt-6 space-y-4">
-                {transactions.map((transaction) => (
-                    <div key={transaction.id}
-                         className="flex items-center justify-between">
-                        <div>
-                            <p>{transaction.title}</p>
-                            <p className="text-sm text-muted-foreground">
-                                {transaction.category}
-                            </p>
-                        </div>
+                {transactions.map((transaction) => {
+                    const category=categories.find((category) => category.label === transaction.category);
+                     const Icon=category?.icon
+                    return(
+                        <div key={transaction.id}
+                                 className="flex items-center justify-between">
+                                <div>
+                                    <p>{transaction.title}</p>
+                                    <p className="text-sm text-muted-foreground">
+                                        {transaction.category}
+                                        {Icon && <Icon size={16} />}
+                                    </p>
+                                </div>
 
-                        <span
-                            className={
-                                transaction.type === 'income'
-                                    ? 'text-success'
-                                    : 'text-danger'
-                            }
-                        >{transaction.type === 'income' ? '+' : '-'}${formatWithThousandsSeparator(Math.abs(transaction.amount))}</span>
-                        <div className="flex gap-2">
-                            <Button
-                                type="button"
-                                variant="destructive"
-                                size="sm"
-                                onClick={() => openConfirmDeleteModal(transaction.id)}
-                            >
-                                Delete
-                            </Button>
-                            <Button
-                                type="button"
-                                variant="outline"
-                                size="sm"
-                                onClick={() => openEditModal(transaction)}
-                            >
-                                Edit
-                            </Button>
-                        </div>
+                                <span
+                                    className={
+                                        transaction.type === 'income'
+                                            ? 'text-success'
+                                            : 'text-danger'
+                                    }
+                                >{transaction.type === 'income' ? '+' : '-'}${formatWithThousandsSeparator(Math.abs(transaction.amount))}</span>
+                                <div className="flex gap-2">
+                                    <Button
+                                        type="button"
+                                        variant="destructive"
+                                        size="sm"
+                                        onClick={() => openConfirmDeleteModal(transaction.id)}
+                                    >
+                                        Delete
+                                    </Button>
+                                    <Button
+                                        type="button"
+                                        variant="outline"
+                                        size="sm"
+                                        onClick={() => openEditModal(transaction)}
+                                    >
+                                        Edit
+                                    </Button>
+                                </div>
 
-                    </div>
-                ))}
+                            </div>
+
+
+                )})}
 
 
             </div> : <div className="mt-6 text-center text-sm text-muted-foreground">there is no transactions yet</div>}
